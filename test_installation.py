@@ -12,10 +12,10 @@ def test_config_loading():
     print("Testing configuration loading...")
     try:
         config = ConfigManager("config.yml")
-        print("✓ Configuration loaded successfully")
+        print("[OK] Configuration loaded successfully")
         return True
     except Exception as e:
-        print(f"✗ Failed to load configuration: {e}")
+        print(f"[ERROR] Failed to load configuration: {e}")
         return False
 
 def test_logging():
@@ -28,10 +28,10 @@ def test_logging():
         logger.info("This is an info message")
         logger.warning("This is a warning message")
         logger.error("This is an error message")
-        print("✓ Logging test completed. Check test.log for output")
+        print("[OK] Logging test completed. Check test.log for output")
         return True
     except Exception as e:
-        print(f"✗ Logging test failed: {e}")
+        print(f"[ERROR] Logging test failed: {e}")
         return False
 
 def test_imports():
@@ -61,9 +61,9 @@ def test_imports():
     for module in modules:
         try:
             __import__(module)
-            print(f"✓ Imported {module}")
+            print(f"[OK] Imported {module}")
         except ImportError as e:
-            print(f"✗ Failed to import {module}: {e}")
+            print(f"[ERROR] Failed to import {module}: {e}")
             success = False
     
     return success
@@ -93,16 +93,16 @@ def main():
     
     all_passed = True
     for name, result in results:
-        status = "PASSED" if result else "FAILED"
+        status = "[PASSED]" if result else "[FAILED]"
         print(f"{name:.<40} {status}")
         if not result:
             all_passed = False
     
     print("\n" + "=" * 50)
     if all_passed:
-        print("✓ All tests passed! Your installation appears to be working correctly.")
+        print("[SUCCESS] All tests passed! Your installation appears to be working correctly.")
     else:
-        print("✗ Some tests failed. Please check the error messages above.")
+        print("[ERROR] Some tests failed. Please check the error messages above.")
     
     return 0 if all_passed else 1
 

@@ -4,6 +4,7 @@ Provides information about the current time, date, and timezone.
 """
 
 import datetime
+import re
 import pytz
 from typing import Dict, Any, Optional
 import logging
@@ -129,7 +130,7 @@ class TimeDateSkill(Skill):
             logger.error(f"Error getting time for {location}: {e}")
             return f"I couldn't get the time for {location}."
     
-    @intent(["what time is it in"], requires_location=True)
+    @intent(["what time is it in"], priority=SkillPriority.HIGH)
     async def handle_time_in_location_alt(self, entities: Dict[str, Any] = None) -> str:
         """Alternative handler for time in location queries."""
         return await self.handle_time_in_location(entities)
@@ -153,17 +154,17 @@ class TimeDateSkill(Skill):
         tz = self.timezone or "system default"
         return f"Your current timezone is set to {tz}."
     
-    @intent(["time until"], requires_entity="target_time")
+    @intent(["time until"], priority=SkillPriority.HIGH)
     async def handle_time_until(self, entities: Dict[str, Any] = None) -> str:
         """Handle time until a specific time or event."""
-        if not entities or 'target_time' not in entities:
-            return "I'm not sure what time or event you're asking about."
+        if not entities or not any(key in entities for key in ['target_time', 'time', 'event']):
+            return "Please specify what time or event you want to know the time until."
         
-        # This is a simplified implementation
-        # In a real app, you'd want to parse the target time/date
-        return "I'm sorry, I can't calculate that yet. This feature is coming soon!"
+        # Try to get the target time from any of the possible entity keys
+        target_time = entities.get('target_time') or entities.get('time') or entities.get('event')
+        return f"I would calculate the time until {target_time}, but this feature isn't implemented yet."
     
-    @intent(["set alarm", "set a timer"], requires_entity="duration")
+    @intent(["set alarm", "set a timer"])
     async def handle_set_alarm(self, entities: Dict[str, Any] = None) -> str:
         """Handle alarm and timer requests."""
         if not entities or 'duration' not in entities:
