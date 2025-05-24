@@ -1,0 +1,101 @@
+# Jetson TX1 Personal Assistant Configuration
+
+# Wake Word Settings
+wake_word:
+  enabled: true
+  word: "Jetson"
+  sensitivity: 0.5
+  engine: "porcupine"  # Options: porcupine, sphinx
+
+# Audio Settings
+audio:
+  input_device: null  # null = system default
+  output_device: null  # null = system default
+  sample_rate: 16000
+  channels: 1
+  chunk_size: 1024
+  timeout: 5  # seconds to listen for command
+  energy_threshold: 300  # for detecting speech start
+
+# Speech Recognition
+speech:
+  engine: "google"  # Options: google, sphinx, vosk
+  language: "en-US"
+  offline_mode: false  # Use offline recognition when possible
+
+# Text to Speech
+tts:
+  engine: "gtts"  # Options: gtts, espeak, pyttsx3
+  voice: "en-US"
+  volume: 1.0
+  rate: 1.0
+  pitch: 1.0
+
+# GUI Settings
+gui:
+  enabled: true
+  theme: "dark"  # Options: light, dark
+  always_on_top: false
+  start_minimized: false
+  show_waveform: true
+
+# Service API Keys
+services:
+  openweathermap:
+    api_key: ""
+    units: "metric"  # Options: metric, imperial
+    location: ""  # Leave empty to use IP-based location
+  
+  google:
+    calendar_enabled: false
+    calendar_credentials_file: "credentials.json"
+  
+  news:
+    api_key: ""
+    sources: "bbc-news,cnn,reuters"
+    max_results: 5
+
+# Skills and Commands
+skills:
+  weather:
+    enabled: true
+  
+  time:
+    enabled: true
+    timezone: ""  # Leave empty for system timezone
+  
+  calendar:
+    enabled: false
+    default_calendar: "primary"
+  
+  reminders:
+    enabled: true
+    storage_file: "reminders.json"
+  
+  news:
+    enabled: true
+  
+  jokes:
+    enabled: true
+  
+  search:
+    enabled: true
+    search_engine: "duckduckgo"  # Options: google, duckduckgo, bing
+  
+  system:
+    enabled: true  # System commands like reboot, shutdown
+
+# Logging
+logging:
+  level: "INFO"  # Options: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  file: "assistant.log"
+  max_size: 10  # MB
+  backup_count: 3
+
+# Advanced
+advanced:
+  hotword_timeout: 300  # seconds to remain active after wake word
+  response_timeout: 15  # max seconds for generating a response
+  threading:
+    use_multiprocessing: true
+    max_workers: 4

@@ -1,0 +1,87 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+*.db-journal
+
+# Local configuration
+.env
+.env.local
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Project specific
+*.wav
+*.mp3
+*.flac
+*.cache/
+.coverage
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+
+# Build and distribution
+*.spec
+build/
+dist/
+*.dmg
+*.pkg
+*.app
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# PyCharm
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Virtual environment
+venv/
+ENV/
+
+# Local development settings
+local_settings.py

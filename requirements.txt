@@ -1,0 +1,47 @@
+# Core Dependencies
+PyQt5>=5.15.0
+PyYAML>=6.0
+pytz>=2021.3
+python-dateutil>=2.8.2
+
+# Speech Recognition
+SpeechRecognition>=3.8.1
+pyaudio>=0.2.11
+pocketsphinx>=0.1.15
+
+# Text-to-Speech
+gTTS>=2.3.0
+pyttsx3>=2.90
+
+# Audio Processing
+numpy>=1.21.0
+sounddevice>=0.4.4
+soundfile>=0.10.3.post1
+
+# Web and API Requests
+requests>=2.26.0
+python-dotenv>=0.19.0
+
+# Utilities
+tqdm>=4.62.0
+python-Levenshtein>=0.12.2
+
+# Testing
+pytest>=6.2.5
+pytest-qt>=4.0.2
+pytest-cov>=2.12.1
+
+# Development
+black>=21.12b0
+isort>=5.10.1
+flake8>=4.0.1
+mypy>=0.930
+
+# Optional: For building standalone executables
+# pyinstaller>=4.9.0
+
+# Platform-specific dependencies
+# For Windows:
+# pypiwin32>=223; sys_platform == 'win32'
+# For Linux:
+# python-xlib>=0.29; sys_platform == 'linux'
